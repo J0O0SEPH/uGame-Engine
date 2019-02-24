@@ -1,0 +1,12 @@
+void Draw(void);
+void Init(void);
+void Level(void);
+void Move(void);
+void MoveDwn(void);
+void init_switch(void);
+void SysTick_Init(unsigned long period);
+void SysTick_Handler(void);
+void Shoot(void);
+void Shoot1(void);
+void Timer2A_Flag(void);
+void Delay100ms(unsigned long count);
