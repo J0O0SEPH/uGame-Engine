@@ -5,6 +5,8 @@
 -   Real-Time Interfacing to the MSP432 Microcontroller-- ISBN-10: 1514676583.
 -   [https://courses.edx.org/courses/course-v1:UTAustinX+UT.6.20x+2T2018/course/](https://courses.edx.org/courses/course-v1:UTAustinX+UT.6.20x+2T2018/course/)
 
+Requirements document is translated to:
+
  - ADC "12-bit": to interface a potentiometer detecting the joystick
    movements.
  - DAC "4-bit": to interface a headphone playing game's sound effects.
