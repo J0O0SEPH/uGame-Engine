@@ -1,15 +1,14 @@
-// Sound.c
-// Runs on any computer
-// Sound assets based off the original Space Invaders and basic
-// functions to play them.  Copy these functions and constants
-// into your SpaceInvaders.c for ease of sharing your game!
-// Jonathan Valvano
-// November 19, 2012
+ /* 
+ Sound.c
+ Runs on any computer
+ Sound assets based off the original Space Invaders and basic
+ functions to play them.  Copy these functions and constants
+ */
 
 #include "Sound.h"
 #include "Timer2.h"
 #include "tm4c123gh6pm.h"
-#define DAC_OUT					(*((volatile unsigned long *)0x4000503C))
+#define   DAC_OUT					(*((volatile unsigned long *)0x4000503C))
 
 const unsigned char shoot[4080] = {
   129, 99, 103, 164, 214, 129, 31, 105, 204, 118, 55, 92, 140, 225, 152, 61, 84, 154, 184, 101, 
@@ -703,6 +702,10 @@ const unsigned char JohnCena[16821] = {
 unsigned long Index = 1;
 const unsigned char *Wave;
 unsigned long COUNT = 0;
+/* 
+Polled @ 11 KHz rate
+outputs to the interfaced DAC the indexed element of the soud arry
+ */
 
 void Play(void){
   if(COUNT){
@@ -713,18 +716,27 @@ void Play(void){
   NVIC_DIS0_R = 1<<23;           // disable IRQ 23 in NVIC
   }
 }
+
+/* 
+Initiates 4-bit Dac and Timer 2A @ 11 KHz
+Sets global variables for the sound array
+ */
 void Sound_Init(void){
   DAC_Init();               // initialize simple 4-bit DAC
   Timer2_Init(&Play, 80000000/11025);     // 11.025 kHz
   Index = 0;
   COUNT = 0;
 }
+/* 
+inputs: pointer to the targeted sound array, and counter of the played elements
+
+ */
 void Sound_Play(const unsigned char *pt, unsigned long count){
   Wave = pt;
   Index = 0;
   COUNT = count;
-  NVIC_EN0_R = 1<<23;           // 9) enable IRQ 19 in NVIC
-  TIMER2_CTL_R = 0x00000001;    // 10) enable TIMER2A
+  NVIC_EN0_R = 1<<23;           // enable IRQ 19 in NVIC
+  TIMER2_CTL_R = 0x00000001;    // enable TIMER2A
 }
 void Sound_Shoot(void){
   Sound_Play(shoot,4080);
