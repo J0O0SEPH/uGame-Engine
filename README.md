@@ -1,5 +1,5 @@
 # Game Engine
->This concept project is an independent proposition, a part of a distance online course for embedded systems and microcontrollers. Code writing and designing process was guided by Dr. Jonathan W Valvano. Using the following references:
+>Code writing and designing process was guided by Dr. Jonathan W Valvano. Using the following references:
 
 -   Introduction to the MSP432 Microcontroller-- ISBN-10: 1512185671.
 -   Real-Time Interfacing to the MSP432 Microcontroller-- ISBN-10: 1514676583.
